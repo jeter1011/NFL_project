@@ -19,7 +19,7 @@ print(column_names)
 # print(header_cols)
 
 draft_data = []
-for row in rows[2:]:
+for row in rows[:]:
     cells = row.find_all("td")
     if cells:
         row_header = cells[0].get_text()
@@ -27,10 +27,12 @@ for row in rows[2:]:
         draft_data.append(row_data)
 
 rookie_class_eval_df = pd.DataFrame(draft_data, columns=column_names)
-rookie_class_eval_df.to_csv()
+rookie_class_eval_df.to_csv("rookie_eval.csv", index=False)
+
 # # Get the header text from the first cell in each row
 # row_headers = []
 # for row in rows:
+
 #     cells = row.find_all("th")
 #     if cells:
 #         row_header = cells[0].get_text()
